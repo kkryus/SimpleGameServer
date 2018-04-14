@@ -1,0 +1,126 @@
+body{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background:Gainsboro;
+}
+.navbar  .container-fluid .navbar-header .navbar-toggle .glyphicon{
+	color:white;
+	text-align:center;
+}
+
+.navbar-brand, .navbar-nav li a {
+    line-height: 64px;
+    height: 64px;
+    padding-top: 0;
+	padding-bottom:0;
+}
+
+.panel-default{
+	margin:auto;
+	width:90%;
+}
+
+.display-field-prefix, .n-field-prefix{
+    display: inline-block;
+    text-align: center;
+    background: #eaeaea;
+    width: 70px;
+	padding: 8px 12px;    
+    border: 1px solid #ccc;
+	border-right: 0px solid transparent;
+	padding-left:4px;
+	border-width: 1px 0 1px 1px;
+    border-radius: 4px 0 0 4px;
+}
+.n-field-prefix{
+	width: 40px;
+}
+
+.add-game-panel-body{
+	text-align:center;
+}
+.form-control{
+	width:10%;
+}
+input{
+    padding: 8px 6px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+	border-width: 1px 1px 1px 0;
+    border-radius: 0px 4px 4px 0px;
+    box-sizing: border-box;
+}
+
+.input-alert{
+	border: 2px solid red;
+    border-radius: 2px;
+}
+	
+.upload{
+	text-align:center;
+	width:500px;
+	
+	border: 1px solid #ddd;
+	padding:20px;
+
+}
+.upload fieldset{
+	border:0;
+	padding:0;
+	margin-bottom:10px;
+	
+}
+
+.upload fieldset legend{
+	font-size:1.2em;
+	margin-bottom:10px;
+}
+
+.bar{
+	width:100%;
+	background:#eee;
+	padding:3px;
+	margin-bottom:10px;
+	box-shadow:inset 0 1px 3px rgba(0, 0, 0, .2);
+	border-radius:3px;
+	box-sizing:border-box;
+}
+.bar-fill{
+	height:20px;
+	display:block;
+	background:cornflowerblue;
+	width:0;
+	border-radius:3px;
+	transition:width 0.8s ease;
+}
+	
+	.bar-fill-text{
+		color:#fff;
+		padding:3px;
+	}
+	.uploads a, .uploads span{
+		display:block;
+	}
+
+@media only screen and (max-width: 500px) {
+
+.panel-default{
+	margin:auto;
+	width:100%;
+}
+.navbar {
+    margin-bottom: 0;
+}
+
+button {
+	width: 80px !important;
+}
+.display-field-prefix, .n-field-prefix{
+	font-size:12px;
+}
+.n-field-prefix{
+	width: 88px;
+}
+.form-control{
+	width:70%;
+}
