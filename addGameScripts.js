@@ -1,11 +1,13 @@
 ﻿function sendGame()
 {	
+	var fails = false;
 	var firstName;
 	
 	var firstNameInput = document.getElementById("firstName");
 	if(firstNameInput.value == "")
 	{
 		firstNameInput.className = "input-alert";
+		fails = true;
 	}
 	else
 	{
@@ -18,6 +20,7 @@
 	if(firstLastNameInput.value == "")
 	{
 		firstLastNameInput.className = "input-alert";
+		fails = true;
 	}
 	else
 	{
@@ -30,50 +33,47 @@
 	if(gameNameInput.value == "")
 	{
 		gameNameInput.className = "input-alert";
+		fails = true;
 	}
 	else
 	{
 		gameName = gameNameInput.value;
 		gameNameInput.className = "form-control";
-	}
+	}	
 	
-	var fileInput = document.getElementById("gameFiles");
+	var fileInput = document.getElementById("file");
 	if(fileInput.files.length == 0)
 	{
 		fileInput.className = "input-alert";
+		fails = true;
 	}
 	else
 	{
 		fileInput.className = "form-control";
 	}
-	var files = fileInput.files;
-	var formData = new FormData();
 	
-	// Loop through each of the selected files.
-	for (var i = 0; i < files.length; i++) {
-		var file = files[i];
+	var secondNameInput = document.getElementById("secondName");
+	var secondName = secondNameInput.value;
+	
+	var secondLastNameInput = document.getElementById("secondLastName");
+	var secondLastName = secondLastNameInput.value;
 
-		// Add the file to the request.
-		formData.append('photos[]', file, file.name);
-	}
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'fileUpload.php', true);
-	
-	xhr.onload = function () 
+	if(!fails)
 	{
-		if (xhr.status === 200) 
-		{
-			// File(s) uploaded.
-			alert("uploaded");
-		} 
-		else 
-		{
-			alert('An error occurred!');
-		}
-	};
-	xhr.send(formData);
-	
+		$.post("saveGameInDatabase.php", {
+		firstNameAuthor:firstName,
+		firstLastNameAuthor:firstLastName,
+		gameName:gameName,
+		secondNameAuthor:secondName,
+		secondLastNameAuthor:secondLastName
+		}, function(data) {
+			if (data != "") {
+				alert('We sent Jquery string to PHP : ' + data);
+			}
+		});		
+		
+	}
+	return !fails;	
 }
 
 var app = app || {};
@@ -85,7 +85,7 @@ var app = app || {};
 	var ajax, getFormData, setProgress;
 	
 	ajax = function(data)
-	{
+	{		
 		var xmlhttp = new XMLHttpRequest(), uploaded;
 		
 		xmlhttp.addEventListener('readystatechange', function()
@@ -114,8 +114,8 @@ var app = app || {};
 			var percent;
 			if(event.lengthComputable === true)
 			{
-			 percent = Math.round((event.loaded / event.total ) *100);
-			 setProgress(percent);
+				percent = Math.round((event.loaded / event.total ) *100);
+				setProgress(percent);
 			}
 		});
 		
@@ -126,18 +126,15 @@ var app = app || {};
 	{
 		var gameName = document.getElementById('gameName').value;
 		var data = new FormData(), i;
-		data.append('gameName', "okokoko" );
 		for(i =0;i<source.length;i++)
 		{
 			if(i == 0 )
 			{
-				console.log(gameName + "." + source[i].name);
 				data.append('file[]', source[i], gameName + "." + source[i].name);
 				continue;
 			}
 			
 			var relativePath = source[i].webkitRelativePath.split('/');
-			console.log(relativePath.length);
 			
 			if(relativePath.length == 3)
 			{			
