@@ -9,13 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="scripts/addGameScripts.js"></script>
-	<!-- Dependencies -->
-	<script src="http://yui.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-	<script src="http://yui.yahooapis.com/2.9.0/build/element/element-min.js"></script>
-	 
-	<!-- Source files -->
-	<script src="http://yui.yahooapis.com/2.9.0/build/uploader/uploader-min.js"></script>
+	<script src="addGameScripts.js"></script>
 	
 
 </head>
@@ -43,6 +37,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">Dodaj grę</div>
 	<div class="panel-body add-game-panel-body">
+	
 		Autor numer 1:
 		<form action="" class="form-inline">
 			<div class="form-group">
@@ -65,16 +60,17 @@
 		</form>
 		<br />
 		
-		Nazwa gry:
+		Nazwa gry: <br />
+		<u>Pamiętaj, iż gra powinna nazywać się dokładnie tak samo, jak folder zawierający wszystkie pliki!</u>
 		<form action="" class="form-inline">
 			<div class="form-group">
-				<input id="gameName" type="text" class="form-control" placeholder="Nazwa">
+				<input id="gameName" type="text" class="form-control" placeholder="Nazwa" data-toggle="tooltip" title="Gra powinna nazywać się w taki sam sposób, jak folder zawierający wszystkie pliki!">
 			</div>
 		</form>
 		<br />
 		
 		<center>
-		<form action="upload.php" method="post" enctype="multipart/form-data" id="upload" class="upload form-inline">
+		<form action="games/upload.php" method="post" enctype="multipart/form-data" id="upload" class="upload form-inline">
 		<div class="form-group">
 			<fieldset>
 				<legend>Wyślij grę na serwer</legend>
@@ -90,43 +86,34 @@
 		
 		
 			<script>
-			document.getElementById('submit').addEventListener('click', function(e){
-				<!-- -->
-				
+			document.getElementById('submit').addEventListener('click', function(e){						
 				e.preventDefault();
-				var f = document.getElementById('file'),
-					pb = document.getElementById('pb'),
-					pt = document.getElementById('pt');
-				app.uploader({
-					files: f,
-					progressBar: pb,
-					progressText: pt,
-					processor: 'upload.php',
-					finished: function(data)
-					{
-						console.log(data);
-					},
-					error: function(){
-						console.log('Not working');
-					}
-				});
+
+				if(sendGame())
+				{
+					var f = document.getElementById('file'),
+						pb = document.getElementById('pb'),
+						pt = document.getElementById('pt');
+					app.uploader({
+						files: f,
+						progressBar: pb,
+						progressText: pt,
+						processor: 'games/upload.php',
+						finished: function(data)
+						{
+							console.log(data);
+						},
+						error: function(){
+							console.log('Not working');
+						}
+					});
+				}
 			});
 			
 			
 			</script>
 		</form></center>
-		
-		
-		<!--<form action="" class="form-inline">
-			<div class="form-group">    
-					<input id="gameFiles" class="form-control center" type="file" webkitdirectory directory multiple/> 
-			</div>
-		</form>
-		<br />
-
-		<button onclick="sendGame()" type="button" class="btn btn-success">Wyślij</button>-->
-
-			
+	
 
 </br>
 </div>
