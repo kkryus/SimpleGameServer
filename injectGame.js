@@ -1,4 +1,4 @@
-﻿function codeAddress() 
+﻿function injectGames() 
 {
 	var amountOfBlocks = 16;
 	for(i = 0;i<amountOfBlocks;i++)
@@ -67,16 +67,14 @@
 		document.getElementsByClassName("card-img-top")[i].width = 365;
 		document.getElementsByClassName("card-img-top")[i].height = 365;
 		document.getElementsByClassName("link")[i].href = "games/" + gameNames[i] +"/index.html";
-		//document.getElementsByClassName("card-img-top")[i].onclick = function() { window.location = 'games/' + gameNames[i] + '/index.html'};
 		if(gameObjects[i].author2 != undefined)
 		{
-			document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\">"+ gameObjects[i].author1 + " </br>" + gameObjects[i].author2 + "</p> ";
+			document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\"><nobr>"+ gameObjects[i].author1 + " </nobr></br><nobr>" + gameObjects[i].author2 + "</nobr></p> ";
 		}
 		else
 		{
-			document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\">"+ gameObjects[i].author1+ "</p> ";
+			document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\"><nobr>"+ gameObjects[i].author1+ "</nobr></p> ";
 		}
 	}
 					
 }
-window.onload = codeAddress;

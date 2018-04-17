@@ -126,38 +126,6 @@ input{
 }
 
 
-.jumbotron {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  margin-bottom: 0;
-  background-color: #fff;
-  background: url(https://www.jasonrawson.co.uk/wp-content/uploads/2014/12/carpenter.jpg);
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  background-size: cover;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-  background: rgba(255,255,255,0.2);
-  padding: 2rem;
-  color: white;
-}
-
-.jumbotron p {
-  color: white;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.album {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: #f7f7f7;
-}
 
 .card {
   float: left;
@@ -173,18 +141,10 @@ input{
 }
 
 .card-text {
-  font-size: 85%;
+  font-size: 75%;
 }
 
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
 
-footer p {
-  margin-bottom: .25rem;
-}
-	
 	
 
 @media only screen and (max-width: 500px) {
