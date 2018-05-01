@@ -56,7 +56,6 @@
 		authors = authors.split(",");
 		gameObjects[i] = {name:gameNames[i], author1:authors[0], author2:authors[1]};
 	}
-	console.log(gameObjects);
 			
 	
 	for(i = 0;i< amountOfGames;i++)
@@ -69,11 +68,13 @@
 		document.getElementsByClassName("link")[i].href = "games/" + gameNames[i] +"/index.html";
 		if(gameObjects[i].author2 != undefined)
 		{
-			document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\"><nobr>"+ gameObjects[i].author1 + " </nobr></br><nobr>" + gameObjects[i].author2 + "</nobr></p> ";
+			//document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\"><nobr>"+ gameObjects[i].author1 + " </nobr></br><nobr>" + gameObjects[i].author2 + "</nobr></p> ";
+			document.getElementsByClassName("card-text")[i].innerHTML = "<nobr>"+ gameObjects[i].author1 + " </nobr></br><nobr>" + gameObjects[i].author2 + "</nobr>";
 		}
 		else
 		{
-			document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\"><nobr>"+ gameObjects[i].author1+ "</nobr></p> ";
+			document.getElementsByClassName("card-text")[i].innerHTML = "<nobr>"+ gameObjects[i].author1+ "</nobr>";
+			//document.getElementsByClassName("card-body")[i].innerHTML = "<p class=\"card-text\"><nobr>"+ gameObjects[i].author1+ "</nobr></p> ";
 		}
 	}
 					
